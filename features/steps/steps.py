@@ -3,33 +3,41 @@ Selenium steps to configure behave test scenarios
 """
 import time
 
-@when('visit url "{url}"')
+@When('I open the demo site - "{url}"')
 def step(context, url):
     context.browser.get(url)
 
-
-@when('check if title is "{title}"')
-def step(context, title):
-    assert context.browser.title == title
-
-
-@when('field with name "First Item" is present check the box')
+@Then('Select the desired location')
 def step(context):
-    context.browser.find_element_by_name("li1").click()
+    context.browser.find_element_by_id('headlessui-listbox-button-1').click()
+    context.browser.find_element_by_id('Bali').click()
+    print('Location is selected as Bali.')
 
-
-@when('field with name "Second Item" is present check the box')
+@Then('Select the number of guests')
 def step(context):
-    context.browser.find_element_by_name("li3").click()
+    context.browser.find_element_by_id('headlessui-listbox-button-5').click()
+    context.browser.find_element_by_id('2').click()
+    print('Number of guests are selected.')
 
+@Then('Search for the results')
+def step(context):
+    context.browser.find_element_by_xpath("//*[@id='search']").click()
+    context.browser.implicitly_wait(3)
 
-@when('select the textbox add "{text}" in the box')
-def step(context, text):
-    context.browser.find_element_by_id("sampletodotext").click()
-    context.browser.find_element_by_id("sampletodotext").clear()
-    context.browser.find_element_by_id("sampletodotext").send_keys(text)
+@Then('Select one of the hotels')
+def step(context):
+    context.browser.find_element_by_id('reserve-now').click()
+    context.browser.implicitly_wait(3)
 
+@Then('Proceed with the booking')
+def step(context):
+    context.browser.find_element_by_id('proceed').click()
+    context.browser.implicitly_wait(3)
+    print('Booking is confirmed.')
 
-@then('click the "{button}"')
-def step(context, button):
-    context.browser.find_element_by_id(button).click()
+@Then('Download the invoice')
+def step(context):
+    context.browser.find_element_by_id('invoice').click()
+    context.browser.implicitly_wait(3)
+    print('Tests are run successfully!')
+    context.browser.execute_script("lambda-status=passed")

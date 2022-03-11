@@ -12,14 +12,14 @@ else:
         CONFIG = json.load(data_file)
 
 username = os.environ["LT_USERNAME"]
-authkey = os.environ["LT_ACCESS_KEY"]
+accesskey = os.environ["LT_ACCESS_KEY"]
 
 
 def before_feature(context, feature):
     desired_cap = setup_desired_cap(CONFIG[INDEX])
     context.browser = webdriver.Remote(
         desired_capabilities=desired_cap,
-        command_executor="https://%s:%s@hub.lambdatest.com:443/wd/hub" % (username, authkey)
+        command_executor="https://%s:%s@hub.lambdatest.com:443/wd/hub" % (username, accesskey)
     )
 
 

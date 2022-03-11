@@ -1,8 +1,10 @@
-Feature: Automate a website
-    Scenario: perform click events
-      When visit url "https://lambdatest.github.io/sample-todo-app"
-      When check if title is "Sample page - lambdatest.com"
-      When field with name "First Item" is present check the box
-      When field with name "Second Item" is present check the box
-      When select the textbox add "Let's add new to do item" in the box
-      Then click the "addbutton"
+Feature: Booking a hotel using Demo site
+
+    Scenario: Book a hotel
+        When I open the demo site - "https://stage-demo.lambdatest.com/"
+        Then Select the desired location 
+        And Select the number of guests
+        Then Search for the results
+        Then Select one of the hotels
+        And Proceed with the booking
+        Then Download the invoice

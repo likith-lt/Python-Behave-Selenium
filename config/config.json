@@ -3,8 +3,8 @@
       "platform": "Windows 10",
       "browserName": "chrome",
       "version": "latest",
-      "build": "Behave Selenium Sample",
-      "name": "Behave Sample Test"
+      "build": "Behave - Python",
+      "name": "Behave Demo Test"
     }
   ]
   
